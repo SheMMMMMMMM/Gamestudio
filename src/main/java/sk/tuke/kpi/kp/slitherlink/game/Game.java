@@ -2,12 +2,22 @@ package sk.tuke.kpi.kp.slitherlink.game;
 
 
 
+import java.util.Date;
 import java.util.Scanner;
 import java.util.Random;
 import sk.tuke.kpi.kp.slitherlink.consoleui.ConsoleUI;
 import sk.tuke.kpi.kp.slitherlink.core.Field;
 import sk.tuke.kpi.kp.slitherlink.core.Maps;
+import sk.tuke.kpi.kp.slitherlink.Service.ScoreService;
+import sk.tuke.kpi.kp.slitherlink.Service.ScoreServiceJDBC;
+import sk.tuke.kpi.kp.slitherlink.Service.CommentService;
+import sk.tuke.kpi.kp.slitherlink.Service.CommentServiceJDBC;
+import sk.tuke.kpi.kp.slitherlink.Service.RatingService;
+import sk.tuke.kpi.kp.slitherlink.Service.RatingServiceJDBC;
 
+import sk.tuke.kpi.kp.slitherlink.Entity.Score;
+import sk.tuke.kpi.kp.slitherlink.Entity.Comment;
+import sk.tuke.kpi.kp.slitherlink.Entity.Rating;
 
 public class Game {
     private Field field;
@@ -15,15 +25,19 @@ public class Game {
     private long score;
     boolean gameInProgress = true;
     private boolean hintsEnabled = false;
-
+    private final ScoreService scoreService = new ScoreServiceJDBC();
+    private final CommentService commentService = new CommentServiceJDBC();
+    private final RatingService ratingService = new RatingServiceJDBC();
+    private String playerName;
     public Game() {
+
     }
 
     public void start() {
         Scanner scanner = new Scanner(System.in);
 
         ConsoleUI.printGameTitle();
-        String playerName = "";
+        playerName = "";
         while (playerName.isBlank()) {
             System.out.print("\033[96m👤 Please enter your name: \033[0m");
             playerName = scanner.nextLine().trim();
@@ -194,6 +208,14 @@ public class Game {
             gameInProgress = false;
             score = (System.currentTimeMillis() - startTime) / 1000;
             ConsoleUI.printVictoryMessage(score, formatTime(score));
+            scoreService.addScore(new Score("Slitherlink", playerName, (int) score, new Date()));
+
+
+            System.out.println("\n🏆 Top Scores:");
+            for (Score s : scoreService.getTopScores("Slitherlink")) {
+                System.out.printf("👤 %s | 🕹 %d points | 📅 %s\n", s.getPlayer(), s.getPoints(), s.getPlayedOn());
+            }
+
 
             Scanner scanner = new Scanner(System.in);
 
@@ -204,6 +226,7 @@ public class Game {
                 System.out.println("✍ \033[38;5;158mEnter your comment:\033[0m");
                 String comment = scanner.nextLine();
                 ConsoleUI.printCommentThankYou(comment);
+                commentService.addComment(new Comment("Slitherlink", playerName, comment, new Date()));
             }
 
             System.out.println("\n⭐ \033[38;5;158mWant to give the game a rating?❓ (yes/no)\033[0m");
@@ -223,6 +246,10 @@ public class Game {
                     }
                 }
                 ConsoleUI.printRatingThankYou(rating);
+
+                ratingService.setRating(new Rating("Slitherlink", playerName, rating, new Date()));
+                System.out.println("⭐ Average rating: " + ratingService.getAverageRating("Slitherlink"));
+
             }
 
             System.out.println("\n🔄 Want to continue the game❓ (yes/no)");

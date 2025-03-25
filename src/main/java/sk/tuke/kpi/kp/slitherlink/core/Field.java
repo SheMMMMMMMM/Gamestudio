@@ -116,13 +116,13 @@ public class Field {
         if (success) {
             removeLineColor(row, col, direction);
 
-            ConsoleUI.printLineRemoval(direction, row, col);
+
 
             switch (direction) {
                 case "N":
                     if (row > 0) {
                         lines[row - 1][col][1] = false;
-                        System.out.println("❌ Removed the north line from the cell");
+                        ConsoleUI.printLineRemoval(direction, row, col);
                     }
                     lines[row][col][0] = false;
                     break;
@@ -130,7 +130,7 @@ public class Field {
                 case "S":
                     if (row < rows - 1) {
                         lines[row + 1][col][0] = false;
-                        System.out.println("❌ Removed the south line from the cell");
+                        ConsoleUI.printLineRemoval(direction, row, col);
                     }
                     lines[row][col][1] = false;
                     break;
@@ -138,7 +138,7 @@ public class Field {
                 case "W":
                     if (col > 0) {
                         lines[row][col - 1][2] = false;
-                        System.out.println("❌ Removed the western line from the cell");
+                        ConsoleUI.printLineRemoval(direction, row, col);
                     }
                     lines[row][col][3] = false;
                     break;
@@ -146,7 +146,7 @@ public class Field {
                 case "E":
                     if (col < cols - 1) {
                         lines[row][col + 1][3] = false;
-                        System.out.println("❌ Remove the eastern line from the cell");
+                        ConsoleUI.printLineRemoval(direction, row, col);
                     }
                     lines[row][col][2] = false;
                     break;
@@ -196,14 +196,12 @@ public class Field {
             }
         }
 
-        // Очищення всіх вертикальних ліній
         for (int i = 0; i < verticalLines.length; i++) {
             for (int j = 0; j < verticalLines[i].length; j++) {
                 verticalLines[i][j] = "|";
             }
         }
 
-        // Скидання масиву стану ліній
         for (int i = 0; i < lines.length; i++) {
             for (int j = 0; j < lines[i].length; j++) {
                 for (int d = 0; d < 4; d++) {
