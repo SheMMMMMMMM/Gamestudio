@@ -23,7 +23,6 @@ public class Line {
             ConsoleUI.printLineAlreadyExists(direction);
             return false;
         }
-
         lines[row][col][dir] = true;
         return true;
     }

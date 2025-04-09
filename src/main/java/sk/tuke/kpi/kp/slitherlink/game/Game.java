@@ -166,7 +166,6 @@ public class Game {
             }
         }
         ConsoleUI.printRatingThankYou(rating);
-
         ratingService.setRating(new Rating("Slitherlink", playerName, rating, new Date()));
         System.out.println("⭐ Average rating: " + ratingService.getAverageRating("Slitherlink"));
 

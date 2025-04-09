@@ -1,5 +1,6 @@
 package sk.tuke.kpi.kp.slitherlink.core;
 
+
 public class Cell {
     private int number;
 

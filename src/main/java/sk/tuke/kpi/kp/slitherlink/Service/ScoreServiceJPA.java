@@ -15,7 +15,6 @@ public class ScoreServiceJPA implements ScoreService {
     @PersistenceContext
     private EntityManager entityManager;
 
-
     @Override
     @Transactional
     public void addScore(Score score) throws ScoreException {

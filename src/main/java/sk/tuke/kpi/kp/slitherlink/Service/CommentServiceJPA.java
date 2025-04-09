@@ -8,6 +8,7 @@ import sk.tuke.kpi.kp.slitherlink.Entity.Comment;
 import java.util.Date;
 import java.util.List;
 
+
 @Transactional
 public class CommentServiceJPA implements CommentService {
 

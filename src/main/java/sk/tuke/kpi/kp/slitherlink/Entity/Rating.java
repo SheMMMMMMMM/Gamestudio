@@ -1,5 +1,4 @@
 package sk.tuke.kpi.kp.slitherlink.Entity;
-
 import jakarta.persistence.*;
 
 

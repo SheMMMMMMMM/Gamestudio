@@ -6,11 +6,9 @@ import sk.tuke.kpi.kp.slitherlink.Entity.Score;
 import sk.tuke.kpi.kp.slitherlink.Service.ScoreService;
 
 import java.util.List;
-
 @RestController
 @RequestMapping("/api/score")
 public class ScoreServiceRest {
-
     @Autowired
     private ScoreService scoreService;
 

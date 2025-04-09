@@ -1,7 +1,6 @@
 package sk.tuke.kpi.kp.slitherlink.Service;
 
 import sk.tuke.kpi.kp.slitherlink.Entity.Comment;
-
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;

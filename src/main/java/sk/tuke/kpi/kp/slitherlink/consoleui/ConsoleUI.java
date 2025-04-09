@@ -1,6 +1,38 @@
 package sk.tuke.kpi.kp.slitherlink.consoleui;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import sk.tuke.kpi.kp.slitherlink.Entity.Comment;
+import sk.tuke.kpi.kp.slitherlink.Entity.Rating;
+import sk.tuke.kpi.kp.slitherlink.Entity.Score;
+import sk.tuke.kpi.kp.slitherlink.Service.CommentService;
+import sk.tuke.kpi.kp.slitherlink.Service.RatingService;
+import sk.tuke.kpi.kp.slitherlink.Service.ScoreService;
+import sk.tuke.kpi.kp.slitherlink.core.Field;
+
+import java.util.Date;
+
 public class ConsoleUI {
+
+    private Field field;
+    public ConsoleUI(Field field) {
+        this.field = field;
+    }
+
+    @Autowired
+    private ScoreService scoreService;
+
+    @Autowired
+    private CommentService commentService;
+
+    @Autowired
+    private RatingService ratingService;
+
+    public void start() {
+
+        scoreService.addScore(new Score("player1", "game1", 100, new Date()));
+        commentService.addComment(new Comment("game1", "player1", "Great game!", new Date()));
+        ratingService.setRating(new Rating("game1", "player1", 5, new Date()));
+    }
     public static void printInvalidName() {
         System.out.println("\033[91m❌ The name cannot be empty. Please try again.\033[0m");
     }
@@ -59,6 +91,7 @@ public class ConsoleUI {
     }
 
     public static void printCommandHelp() {
+        System.out.println("\n\n\033[91m> \033[93m\033[1m(E - exit \"(E)\"  R - restart \"(R)\"  S  - select \"(S12N)\"  U - unselect \"(U12N)\"  B - block \"(B12N)\"  C - enter comment F - enter rating L - check solution for cell\"(L11)\")\033[0m");
     }
 
     public static void printExitMessage() {
@@ -125,4 +158,6 @@ public class ConsoleUI {
     }
 
 
+    public void play() {
+    }
 }

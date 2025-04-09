@@ -52,7 +52,6 @@ public class Field {
 
         String[][] winningMap = Maps.getWinningMap(difficulty, mapIndex);
 
-
         for (int i = 0; i < rows; i++) {
             for (int j = 0; j < cols; j++) {
                 int actualLines = countLinesAroundCell(i, j);
