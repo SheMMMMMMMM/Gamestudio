@@ -5,6 +5,7 @@ import jakarta.persistence.PersistenceContext;
 import jakarta.transaction.Transactional;
 import sk.tuke.kpi.kp.slitherlink.Entity.Rating;
 
+
 @Transactional
 public class RatingServiceJPA implements RatingService {
     @Override

@@ -10,6 +10,7 @@ import sk.tuke.kpi.kp.slitherlink.Service.*;
 @SpringBootApplication
 @Configuration
 @EntityScan("sk.tuke.kpi.kp.slitherlink.entity")
+
 public class GameStudioServer {
 
     public static void main(String[] args) { SpringApplication.run(GameStudioServer.class, args);}

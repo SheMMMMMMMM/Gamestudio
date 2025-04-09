@@ -52,7 +52,6 @@ public class Line {
             default -> -1;
         };
     }
-
     public boolean[][][] getLines() {
         return lines;
     }

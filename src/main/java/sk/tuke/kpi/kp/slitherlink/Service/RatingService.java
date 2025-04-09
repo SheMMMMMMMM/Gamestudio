@@ -3,6 +3,7 @@ package sk.tuke.kpi.kp.slitherlink.Service;
 import org.springframework.stereotype.Service;
 import sk.tuke.kpi.kp.slitherlink.Entity.Rating;
 
+
 @Service
 public interface RatingService {
     void setRating(Rating rating) throws RatingException;

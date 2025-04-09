@@ -1,5 +1,6 @@
 package sk.tuke.kpi.kp.slitherlink.Service;
 
+
 public class RatingException extends RuntimeException {
     public RatingException(String message) {
         super(message);

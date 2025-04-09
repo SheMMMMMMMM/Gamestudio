@@ -22,7 +22,6 @@ public class Field {
         fieldValues = new String[rows][cols];
         lineManager = new Line(rows, cols);
         lines = new boolean[rows][cols][4];
-
         for (int i = 0; i < rows; i++) {
             for (int j = 0; j < cols; j++) {
                 fieldValues[i][j] = null;

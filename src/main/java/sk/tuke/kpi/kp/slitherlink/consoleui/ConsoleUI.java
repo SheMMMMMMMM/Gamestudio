@@ -8,7 +8,6 @@ import sk.tuke.kpi.kp.slitherlink.Service.CommentService;
 import sk.tuke.kpi.kp.slitherlink.Service.RatingService;
 import sk.tuke.kpi.kp.slitherlink.Service.ScoreService;
 import sk.tuke.kpi.kp.slitherlink.core.Field;
-
 import java.util.Date;
 
 public class ConsoleUI {

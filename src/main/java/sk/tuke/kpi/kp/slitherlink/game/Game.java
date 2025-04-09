@@ -15,7 +15,6 @@ import java.util.Random;
 import java.util.Scanner;
 
 public class Game {
-
     private Field field;
     private long startTime;
     private long score;

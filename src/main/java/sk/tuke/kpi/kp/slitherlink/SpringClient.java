@@ -25,6 +25,7 @@ public class SpringClient implements CommandLineRunner {
         Game game = new Game();
         game.start();
     }
+
     @Bean
     public ScoreService scoreService() {
         //return new ScoreServiceJPA();

@@ -1,4 +1,5 @@
 package sk.tuke.kpi.kp.slitherlink;
+
 import sk.tuke.kpi.kp.slitherlink.game.Game;
 
 public class Main {
