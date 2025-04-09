@@ -10,7 +10,6 @@ import java.util.List;
 
 @Transactional
 public class CommentServiceJPA implements CommentService {
-
     @PersistenceContext
     private EntityManager entityManager;
 

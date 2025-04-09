@@ -30,7 +30,6 @@ public class Field {
         }
     }
 
-
     public int getMapIndex() {
         return mapIndex;
     }

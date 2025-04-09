@@ -15,7 +15,6 @@ public class RatingServiceJPA implements RatingService {
             throw new RatingException("Error saving rating", e);
         }
     }
-
     @PersistenceContext
     private EntityManager entityManager;
 

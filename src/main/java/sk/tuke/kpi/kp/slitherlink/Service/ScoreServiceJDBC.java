@@ -47,7 +47,6 @@ public class ScoreServiceJDBC implements ScoreService {
             throw new ScoreException("Problem selecting score", e);
         }
     }
-
     @Override
     public void reset() {
         try (Connection connection = DriverManager.getConnection(URL, USER, PASSWORD);

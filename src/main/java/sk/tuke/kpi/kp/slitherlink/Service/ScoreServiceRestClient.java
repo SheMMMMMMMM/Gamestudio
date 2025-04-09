@@ -9,11 +9,9 @@ import sk.tuke.kpi.kp.slitherlink.Entity.Score;
 import java.util.Arrays;
 import java.util.List;
 
-
 @Service
 public class ScoreServiceRestClient implements ScoreService {
     private final String url = "http://localhost:8080/api/score";
-
     @Autowired
     private RestTemplate restTemplate;
 

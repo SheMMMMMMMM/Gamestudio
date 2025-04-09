@@ -17,7 +17,6 @@ import java.util.Date;
         query = "DELETE FROM Score"
 )
 public class Score implements Serializable {
-
     @Id
     @GeneratedValue
     private int ident;

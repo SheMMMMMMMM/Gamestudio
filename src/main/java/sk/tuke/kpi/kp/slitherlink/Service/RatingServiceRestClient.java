@@ -9,7 +9,6 @@ import sk.tuke.kpi.kp.slitherlink.Entity.Rating;
 @Service
 public class RatingServiceRestClient implements RatingService {
     private final String url = "http://localhost:8080/api/ratings";
-
     @Autowired
     private RestTemplate restTemplate;
 

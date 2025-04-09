@@ -454,7 +454,6 @@ public class Maps {
         };
 
     }
-
     public static String[][] getMap(int difficulty, int mapIndex) {
         if (difficulty == 1) {
             if (mapIndex >= 0 && mapIndex < easyMaps.length) {

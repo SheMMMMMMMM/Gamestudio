@@ -76,7 +76,6 @@ public class RatingServiceJDBC implements RatingService {
             throw new RatingException("Problem loading user rating", e);
         }
     }
-
     @Override
     public void reset() {
         try (Connection connection = DriverManager.getConnection(URL, USER, PASSWORD);

@@ -56,4 +56,5 @@ public class Line {
     public boolean[][][] getLines() {
         return lines;
     }
+
 }

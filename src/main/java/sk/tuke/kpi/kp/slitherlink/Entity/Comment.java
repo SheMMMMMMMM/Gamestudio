@@ -17,7 +17,6 @@ import java.util.Date;
         query = "DELETE FROM Comment"
 )
 public class Comment implements Serializable {
-
     @Id
     @GeneratedValue
     private int ident;
