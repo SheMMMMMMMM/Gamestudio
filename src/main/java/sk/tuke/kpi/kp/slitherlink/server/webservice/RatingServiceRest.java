@@ -8,6 +8,7 @@ import sk.tuke.kpi.kp.slitherlink.Service.RatingService;
 @RestController
 @RequestMapping("/api/ratings")
 public class RatingServiceRest {
+
     @Autowired
     private RatingService ratingService;
 

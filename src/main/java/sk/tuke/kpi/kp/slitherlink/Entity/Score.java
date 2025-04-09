@@ -40,9 +40,7 @@ public class Score implements Serializable {
 
     public Score() {}
 
-    public int getIdent() {
-        return ident;
-    }
+    public int getIdent() {return ident;}
 
     public void setIdent(int ident) {
         this.ident = ident;

@@ -170,6 +170,7 @@ public class Game {
         System.out.println("⭐ Average rating: " + ratingService.getAverageRating("Slitherlink"));
 
     }
+
     public void printComment(){
         Scanner scanner = new Scanner(System.in);
         System.out.println("✍ \033[38;5;158mEnter your comment:\033[0m");

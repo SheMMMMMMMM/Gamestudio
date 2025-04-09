@@ -49,7 +49,6 @@ public class Field {
 
     public boolean checkVictory() {
         ConsoleUI.printCheckStart();
-
         String[][] winningMap = Maps.getWinningMap(difficulty, mapIndex);
 
         for (int i = 0; i < rows; i++) {

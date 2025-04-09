@@ -1,4 +1,5 @@
 package sk.tuke.kpi.kp.slitherlink.Service;
+
 import org.springframework.stereotype.Service;
 import sk.tuke.kpi.kp.slitherlink.Entity.Comment;
 

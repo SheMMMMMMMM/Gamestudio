@@ -12,6 +12,7 @@ import org.springframework.web.client.RestTemplate;
 import sk.tuke.kpi.kp.slitherlink.Service.*;
 import sk.tuke.kpi.kp.slitherlink.game.Game;
 
+
 @SpringBootApplication
 @Configuration
 @ComponentScan(excludeFilters = @ComponentScan.Filter(type = FilterType.REGEX,

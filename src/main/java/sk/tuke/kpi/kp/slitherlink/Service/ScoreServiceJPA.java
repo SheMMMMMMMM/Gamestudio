@@ -5,7 +5,6 @@ import jakarta.persistence.LockModeType;
 import jakarta.persistence.PersistenceContext;
 import jakarta.transaction.Transactional;
 import sk.tuke.kpi.kp.slitherlink.Entity.Score;
-
 import java.util.Date;
 import java.util.List;
 

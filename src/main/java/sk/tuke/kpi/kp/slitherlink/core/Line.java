@@ -26,6 +26,7 @@ public class Line {
         lines[row][col][dir] = true;
         return true;
     }
+
     public boolean delLine(int row, int col, String direction) {
         if (row < 0 || row >= rows || col < 0 || col >= cols) {
             ConsoleUI.printInvalidCoordinates(row, col);

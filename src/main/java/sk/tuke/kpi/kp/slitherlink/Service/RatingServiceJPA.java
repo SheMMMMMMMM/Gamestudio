@@ -7,7 +7,6 @@ import sk.tuke.kpi.kp.slitherlink.Entity.Rating;
 
 @Transactional
 public class RatingServiceJPA implements RatingService {
-
     @Override
     public void addRating(Rating rating) throws RatingException {
         try {

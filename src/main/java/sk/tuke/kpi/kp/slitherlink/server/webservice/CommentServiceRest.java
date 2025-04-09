@@ -10,6 +10,7 @@ import java.util.List;
 @RestController
 @RequestMapping("/api/comments")
 public class CommentServiceRest {
+
     @Autowired
     private CommentService commentService;
 

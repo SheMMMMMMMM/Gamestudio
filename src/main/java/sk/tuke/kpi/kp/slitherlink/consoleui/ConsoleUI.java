@@ -17,7 +17,6 @@ public class ConsoleUI {
     public ConsoleUI(Field field) {
         this.field = field;
     }
-
     @Autowired
     private ScoreService scoreService;
 
