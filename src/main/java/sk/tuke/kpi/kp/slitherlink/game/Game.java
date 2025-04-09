@@ -1,23 +1,18 @@
 package sk.tuke.kpi.kp.slitherlink.game;
 
 
-
-import java.util.Date;
-import java.util.Scanner;
-import java.util.Random;
+import sk.tuke.kpi.kp.slitherlink.Entity.Comment;
+import sk.tuke.kpi.kp.slitherlink.Entity.Rating;
+import sk.tuke.kpi.kp.slitherlink.Entity.Score;
+import sk.tuke.kpi.kp.slitherlink.Service.*;
 import sk.tuke.kpi.kp.slitherlink.consoleui.ConsoleUI;
 import sk.tuke.kpi.kp.slitherlink.core.Field;
 import sk.tuke.kpi.kp.slitherlink.core.Maps;
-import sk.tuke.kpi.kp.slitherlink.Service.ScoreService;
-import sk.tuke.kpi.kp.slitherlink.Service.ScoreServiceJDBC;
-import sk.tuke.kpi.kp.slitherlink.Service.CommentService;
-import sk.tuke.kpi.kp.slitherlink.Service.CommentServiceJDBC;
-import sk.tuke.kpi.kp.slitherlink.Service.RatingService;
-import sk.tuke.kpi.kp.slitherlink.Service.RatingServiceJDBC;
 
-import sk.tuke.kpi.kp.slitherlink.Entity.Score;
-import sk.tuke.kpi.kp.slitherlink.Entity.Comment;
-import sk.tuke.kpi.kp.slitherlink.Entity.Rating;
+import java.util.Date;
+import java.util.List;
+import java.util.Random;
+import java.util.Scanner;
 
 public class Game {
     private Field field;
@@ -60,6 +55,8 @@ public class Game {
 
         hintsEnabled = hints.equals("yes");
 
+        printCommentAndRating();
+        printTopPlayers();
         int difficulty;
 
         while (true) {
@@ -76,6 +73,7 @@ public class Game {
                 ConsoleUI.printInvalidDifficulty();
             }
         }
+
 
         generateFieldByDifficulty(difficulty);
 
@@ -112,13 +110,74 @@ public class Game {
         }
 
     }
+    public void printCommentAndRating() {
+        System.out.println();
+        List<Comment> comments = commentService.getComments("Slitherlink");
+
+        for (Comment comment : comments) {
+            String playerName = comment.getPlayer();
+            String commentText = comment.getComment();
+            String date = (comment.getDate() != null) ? comment.getDate().toString() : "Дата не задана";
+            int rating = ratingService.getRating("Slitherlink", playerName);
+            System.out.printf("Player %s commented \"%s\" on %s and rated %d\n", playerName, commentText, date, rating);
+        }
+        System.out.println();
+    }
+    public void printTopPlayers() {
+        System.out.println("\n🏆 Top Players (Lowest Score First):");
+        List<Score> topScores = scoreService.getTopScores("Slitherlink");
+
+        if (topScores.isEmpty()) {
+            System.out.println("No scores available.");
+            return;
+        }
+
+        topScores.sort((score1, score2) -> Integer.compare(score1.getPoints(), score2.getPoints()));
+
+        for (Score score : topScores) {
+            String playerName = score.getPlayer();
+            int points = score.getPoints();
+            String date = score.getPlayedOn().toString();
+
+            System.out.printf("👤 %s | 🕹 %d points | 📅 %s\n", playerName, points, date);
+        }
+        System.out.println();
+    }
+
+
 
     private String formatTime(long seconds) {
         long minutes = seconds / 60;
         long remainingSeconds = seconds % 60;
         return String.format("%02d:%02d", minutes, remainingSeconds);
     }
+    public void printRating(){
+        Scanner scanner = new Scanner(System.in);
+        int rating = -1;
+        while (rating < 0 || rating > 5) {
+            System.out.println("🔢 \033[38;5;158mEnter a rating from 0 to 5:\033[0m");
+            try {
+                rating = Integer.parseInt(scanner.nextLine().trim());
+                if (rating < 0 || rating > 5) {
+                    System.out.println("❌ \033[38;5;158mInvalid value! Enter a number between 0 and 5.\033[0m");
+                }
+            } catch (NumberFormatException e) {
+                System.out.println("❌ \033[38;5;158mPlease enter a number!\033[0m");
+            }
+        }
+        ConsoleUI.printRatingThankYou(rating);
 
+        ratingService.setRating(new Rating("Slitherlink", playerName, rating, new Date()));
+        System.out.println("⭐ Average rating: " + ratingService.getAverageRating("Slitherlink"));
+
+    }
+    public void printComment(){
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("✍ \033[38;5;158mEnter your comment:\033[0m");
+        String comment = scanner.nextLine();
+        ConsoleUI.printCommentThankYou(comment);
+        commentService.addComment(new Comment("Slitherlink", playerName, comment, new Date()));
+    }
     public void processCommand(String command) {
         if (command == null || command.isEmpty()) {
             return;
@@ -126,15 +185,22 @@ public class Game {
 
         command = command.toUpperCase();
 
-        if (command.equals("C")) {
-            if (!hintsEnabled) {
-                ConsoleUI.printHintsDisabled();
-                return;
-            }
-            field.checkSolution();
-            return;
-        }
+//        if (command.equals("C")) {
+//            if (!hintsEnabled) {
+//                ConsoleUI.printHintsDisabled();
+//                return;
+//            }
+//            field.checkSolution();
+//            return;
+//        }
 
+
+        if((command.startsWith("C"))){
+            printComment();
+        }
+        if((command.startsWith("F"))){
+            printRating();
+        }
         if (command.startsWith("L")) {
             if (!hintsEnabled) {
                 ConsoleUI.printHintsDisabled();

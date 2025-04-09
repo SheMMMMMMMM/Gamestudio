@@ -1,7 +1,5 @@
 package sk.tuke.kpi.kp.slitherlink.Service;
 
-
-
 import sk.tuke.kpi.kp.slitherlink.Entity.Score;
 
 import java.sql.*;
@@ -59,5 +57,10 @@ public class ScoreServiceJDBC implements ScoreService {
         } catch (SQLException e) {
             throw new ScoreException("Problem deleting score", e);
         }
+    }
+
+    @Override
+    public List<Score> getAllScores() {
+        return List.of();
     }
 }

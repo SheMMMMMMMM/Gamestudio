@@ -8,4 +8,5 @@ public interface ScoreService {
     void addScore(Score score) throws ScoreException;
     List<Score> getTopScores(String game) throws ScoreException;
     void reset() throws ScoreException;
+    List<Score> getAllScores();  // Новий метод для отримання всіх записів
 }

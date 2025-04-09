@@ -1,0 +1,42 @@
+### add score
+POST http://localhost:8080/api/score
+Content-Type: application/json
+
+{
+  "game": "Slitherlink",
+  "player": "jozef",
+  "points": 344,
+  "playedon": "2025-04-08T22:09:44.57"
+}
+###
+GET http://localhost:8080/api/score
+Content-Type: application/json
+
+### add comment
+POST http://localhost:8080/api/comments
+Content-Type: application/json
+
+{
+  "player": "jozef",
+  "game" : "Slitherlink",
+  "comment": "adadadad",
+  "commentedOn": "2025-04-08T22:09:44.57"
+}
+
+###
+GET http://localhost:8080/api/comments/Slitherlink
+Accept: application/json
+
+### add rating
+POST http://localhost:8080/api/ratings
+Content-Type: application/json
+
+{
+  "game": "Slitherlink",
+  "player": "jozef",
+  "ratedOn": "2025-04-08T13:00:00",
+  "rating": 5
+}
+###
+GET http://localhost:8080/api/ratings/Slitherlink/jozef
+Accept: application/json

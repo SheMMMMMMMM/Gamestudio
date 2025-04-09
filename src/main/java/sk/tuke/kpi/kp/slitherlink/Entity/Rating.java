@@ -1,11 +1,32 @@
 package sk.tuke.kpi.kp.slitherlink.Entity;
 
-import java.util.Date;
+import jakarta.persistence.*;
 
-public class Rating {
+
+import java.io.Serializable;
+import java.util.Date;
+@Entity
+@NamedQuery(
+        name = "Rating.getAverageRating",
+        query = "SELECT AVG(r.rating) FROM Rating r WHERE r.game = :game"
+)
+@NamedQuery(
+        name = "Rating.getUserRating",
+        query = "SELECT r.rating FROM Rating r WHERE r.game = :game AND r.player = :player"
+)
+@NamedQuery(
+        name = "Rating.resetRatings",
+        query = "DELETE FROM Rating"
+)
+public class Rating implements Serializable {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private int ident;
+
     private String game;
     private String player;
     private int rating;
+    @Column(name = "ratedon")
     private Date ratedOn;
 
     public Rating(String game, String player, int rating, Date ratedOn) {
@@ -14,6 +35,10 @@ public class Rating {
         this.rating = rating;
         this.ratedOn = ratedOn;
     }
+    public Rating() {}
+    public int getIdent() {return ident;}
+
+    public void setIdent(int ident) {this.ident = ident;}
 
     public String getGame() {
         return game;

@@ -59,7 +59,6 @@ public class ConsoleUI {
     }
 
     public static void printCommandHelp() {
-        System.out.println("\n\n\033[91m> \033[93m\033[1m(E - exit \"(E)\"  R - restart \"(R)\"  S  - select \"(S12N)\"  U - unselect \"(U12N)\"  B - block \"(B12N)\"  C - check solution L - check solution for cell)\033[0m");
     }
 
     public static void printExitMessage() {

@@ -2,7 +2,6 @@ package sk.tuke.kpi.kp.slitherlink.Entity;
 
 import java.util.Date;
 
-public class Comment {
     private String game;
     private String player;
     private String comment;
