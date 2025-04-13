@@ -23,5 +23,6 @@ public class CommentServiceRest {
     public List<Comment> getComments(@PathVariable String game) {
         return commentService.getComments(game);
     }
+
 }
 
