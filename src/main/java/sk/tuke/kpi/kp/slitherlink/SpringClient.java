@@ -44,3 +44,5 @@ public class SpringClient implements CommandLineRunner {
     @Bean
     public RestTemplate restTemplate() {return new RestTemplate();}
 }
+
+// шо таке Bean Transactional Configuration Autowired Service

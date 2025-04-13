@@ -4,10 +4,12 @@ import jakarta.persistence.EntityManager;
 import jakarta.persistence.LockModeType;
 import jakarta.persistence.PersistenceContext;
 import jakarta.transaction.Transactional;
+import org.springframework.stereotype.Service;
 import sk.tuke.kpi.kp.slitherlink.Entity.Score;
 import java.util.Date;
 import java.util.List;
 
+@Service
 @Transactional
 public class ScoreServiceJPA implements ScoreService {
     @PersistenceContext

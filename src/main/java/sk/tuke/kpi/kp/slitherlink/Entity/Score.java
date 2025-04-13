@@ -25,7 +25,7 @@ public class Score implements Serializable {
     private int points;
 
     @Column(name = "playedon")
-    @Temporal(TemporalType.TIMESTAMP) // Це важливо для правильного збереження дати
+    @Temporal(TemporalType.TIMESTAMP)
     @JsonFormat(pattern = "yyyy-MM-dd'T'HH:mm:ss")
     private Date playedOn;
 
