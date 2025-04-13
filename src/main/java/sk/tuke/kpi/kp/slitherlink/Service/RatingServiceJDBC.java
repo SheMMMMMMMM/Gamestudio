@@ -17,7 +17,6 @@ public class RatingServiceJDBC implements RatingService {
     private static final String SELECT_USER_RATING = "SELECT rating FROM rating WHERE game = ? AND player = ?";
     private static final String DELETE_ALL = "DELETE FROM rating";
 
-    // Оновлений метод для додавання або оновлення рейтингу
     @Override
     public void setRating(Rating rating) {
         try (Connection connection = DriverManager.getConnection(URL, USER, PASSWORD);
@@ -33,7 +32,6 @@ public class RatingServiceJDBC implements RatingService {
         }
     }
 
-    // Метод для додавання рейтингу (аналогічний setRating)
     public void addRating(String game, String player, int ratingValue, Date ratedOn) {
         try (Connection connection = DriverManager.getConnection(URL, USER, PASSWORD);
              PreparedStatement statement = connection.prepareStatement(INSERT_OR_UPDATE)

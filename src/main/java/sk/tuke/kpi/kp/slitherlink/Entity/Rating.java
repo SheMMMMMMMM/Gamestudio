@@ -17,7 +17,6 @@ import java.util.Date;
         name = "Rating.resetRatings",
         query = "DELETE FROM Rating"
 )
-
 public class Rating implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

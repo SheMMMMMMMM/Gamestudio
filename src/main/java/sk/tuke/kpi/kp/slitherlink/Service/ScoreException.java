@@ -1,6 +1,5 @@
 package sk.tuke.kpi.kp.slitherlink.Service;
 
-
 public class ScoreException extends RuntimeException {
     public ScoreException(String message) {
         super(message);

@@ -84,6 +84,7 @@ public class Field {
             }
         }
     }
+
     public int countLinesAroundCell(int row, int col) {
         int lineCount = 0;
 
@@ -100,9 +101,6 @@ public class Field {
         return lineCount;
     }
 
-
-
-
     public void setCell(int row, int col, String value) {
         if (row >= 0 && row < rows && col >= 0 && col < cols) {
             fieldValues[row][col] = value;
@@ -113,8 +111,6 @@ public class Field {
 
         if (success) {
             removeLineColor(row, col, direction);
-
-
 
             switch (direction) {
                 case "N":

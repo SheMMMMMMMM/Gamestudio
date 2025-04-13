@@ -24,7 +24,6 @@ public class RatingServiceRestClient implements RatingService {
             throw new RatingException("Error setting rating", e);
         }
     }
-
     @Override
     public int getAverageRating(String game) {
         return restTemplate.getForEntity(url + "/" + game, Integer.class).getBody();

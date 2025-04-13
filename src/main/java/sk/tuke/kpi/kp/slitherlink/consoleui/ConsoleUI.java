@@ -76,6 +76,7 @@ public class ConsoleUI {
         System.out.println("      ██  ██      ██    ██    ██   ██ ██      ██   ██ ██       ██ ██  ██ ██ ██  ██");
         System.out.println(" ███████  ███████ ██    ██    ██   ██ ███████ ██   ██ ███████  ██ ██   ████ ██   ██");
         System.out.println("\033[0m");
+
     }
 
     public static void printWelcomeMessage() {

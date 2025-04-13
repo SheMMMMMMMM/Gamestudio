@@ -12,5 +12,4 @@ public class Cell {
     public void setNumber(int number) {
         this.number = number;
     }
-
 }

@@ -73,7 +73,6 @@ public class Score implements Serializable {
     public void setPlayedOn(Date playedOn) {
         this.playedOn = playedOn;
     }
-
     @Override
     public String toString() {
         return "Score{" +

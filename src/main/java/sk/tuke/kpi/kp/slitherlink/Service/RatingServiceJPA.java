@@ -23,7 +23,6 @@ public class RatingServiceJPA implements RatingService {
     public void setRating(Rating rating) throws RatingException {
         entityManager.persist(rating);
     }
-
     @Override
     public int getAverageRating(String game) throws RatingException {
         return (int) entityManager.createNamedQuery("Rating.getAverageRating")

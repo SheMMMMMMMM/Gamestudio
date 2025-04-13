@@ -7,7 +7,6 @@ import sk.tuke.kpi.kp.slitherlink.Entity.Comment;
 import java.util.Arrays;
 import java.util.List;
 
-
 @Service
 public class CommentServiceRestClient implements CommentService {
     private final String url = "http://localhost:8080/api/comments";

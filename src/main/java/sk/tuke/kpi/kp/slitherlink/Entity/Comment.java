@@ -16,7 +16,6 @@ import java.util.Date;
         name = "Comment.resetComments",
         query = "DELETE FROM Comment"
 )
-
 public class Comment implements Serializable {
     @Id
     @GeneratedValue

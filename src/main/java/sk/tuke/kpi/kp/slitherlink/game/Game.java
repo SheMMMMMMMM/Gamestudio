@@ -194,7 +194,6 @@ public class Game {
 //            return;
 //        }
 
-
         if((command.startsWith("C"))){
             printComment();
         }
