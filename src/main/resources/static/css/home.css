@@ -21,7 +21,6 @@ body.dark-theme {
 body.light-theme {
     background: linear-gradient(to bottom, #e0e7ff, #f5f7fa, #dfe9f3);
 }
-
 .main {
     width: 350px;
     height: 500px;

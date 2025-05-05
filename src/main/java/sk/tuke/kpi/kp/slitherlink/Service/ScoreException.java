@@ -8,3 +8,4 @@ public class ScoreException extends RuntimeException {
         super(message, cause);
     }
 }
+

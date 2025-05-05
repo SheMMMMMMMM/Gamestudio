@@ -15,7 +15,6 @@ public class Progress {
 
     @Column(unique = true)
     private String playerName;
-
     private Integer level;
 
     @ElementCollection

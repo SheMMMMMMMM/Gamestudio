@@ -14,7 +14,6 @@ import sk.tuke.kpi.kp.slitherlink.Service.*;
 @EntityScan("sk.tuke.kpi.kp.slitherlink.entity")
 @EnableJpaRepositories(basePackages = "sk.tuke.kpi.kp.slitherlink.Service")
 public class GameStudioServer {
-
     public static void main(String[] args) { SpringApplication.run(GameStudioServer.class, args);}
     @Bean
     public ScoreService scoreService() {return new ScoreServiceJPA();}

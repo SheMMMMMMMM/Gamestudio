@@ -666,7 +666,6 @@ public class GameController {
             String lastVContent = isLastVActive ? "│" : isLastVBlocked ? "×" : " ";
             html.append(String.format("<span class='line-vertical %s' data-id='%d-%d-vertical' data-content='%s'></span>", lastVClassName, i, field.getCols(), lastVContent));
             html.append("</div>");
-
             if (i < field.getRows()) {
                 html.append("<div style='margin-left: 5px;'>");
                 for (int j = 0; j < field.getCols(); j++) {

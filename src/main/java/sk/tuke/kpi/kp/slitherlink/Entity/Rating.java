@@ -21,7 +21,6 @@ public class Rating implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int ident;
-
     private String game;
     private String player;
     private int rating;

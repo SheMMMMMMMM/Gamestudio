@@ -11,7 +11,6 @@ import sk.tuke.kpi.kp.slitherlink.core.Field;
 import java.util.Date;
 
 public class ConsoleUI {
-
     private Field field;
     public ConsoleUI(Field field) {
         this.field = field;

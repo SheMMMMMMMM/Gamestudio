@@ -85,7 +85,6 @@ public class RatingServiceJDBC implements RatingService {
             throw new RatingException("Problem deleting ratings", e);
         }
     }
-
     @Override
     public void addRating(Rating rating) throws RatingException {
     }

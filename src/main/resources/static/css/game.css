@@ -8,7 +8,6 @@
     --accent-light: #1e40af;
     --blur-amount: 5px;
 }
-
 /* Global */
 body {
     margin: 0;
@@ -20,7 +19,6 @@ body {
     font-family: 'Jost', sans-serif;
     transition: background 0.3s ease, color 0.3s ease;
 }
-
 body.modal-open {
     overflow: hidden;
 }
@@ -33,7 +31,6 @@ body.light-theme {
     background: linear-gradient(to bottom, var(--bg-light), var(--bg-light-alt));
 }
 
-/* Main container of the game */
 .main {
     width: 450px;
     min-height: 600px;
@@ -70,7 +67,7 @@ body.light-theme {
     overflow-y: auto;
 }
 
-/* Header */
+
 .main h1 {
     font-size: 2rem;
     margin-bottom: 20px;
@@ -85,7 +82,7 @@ body.light-theme .main h1 {
     color: #333;
 }
 
-/* Game field container */
+
 .game-field-container {
     display: flex;
     justify-content: center;
@@ -93,7 +90,7 @@ body.light-theme .main h1 {
     width: 100%;
 }
 
-/* Game field with CSS Grid */
+
 #game-field {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(40px, 1fr));
@@ -101,7 +98,7 @@ body.light-theme .main h1 {
     user-select: none;
 }
 
-/* Info container */
+
 .game-info-container {
     display: flex;
     flex-direction: column;
@@ -130,14 +127,13 @@ body.light-theme #player-name {
     color: var(--accent-light);
 }
 
-/* Timer and player name */
+
 #timer, #player-name {
     font-size: 1.2em;
     font-weight: bold;
     transition: color 0.3s ease;
 }
 
-/* Controls */
 .game-controls {
     display: flex;
     justify-content: center;
@@ -192,7 +188,6 @@ body.light-theme #rate-game-btn {
     outline: 2px dashed var(--accent-dark);
 }
 
-/* Modal windows */
 .modal {
     position: fixed;
     top: 0;
@@ -248,7 +243,6 @@ body.light-theme .modal-content {
     transition: color 0.3s ease;
 }
 
-/* Dot, cell, and line styles */
 .dot, .cell, .col-number, .row-number {
     transition: color 0.3s ease;
 }
@@ -289,7 +283,6 @@ body.light-theme .modal-content {
     cursor: pointer;
 }
 
-/* Default state for lines */
 .line-horizontal::before {
     content: "──";
     color: transparent;
@@ -300,41 +293,36 @@ body.light-theme .modal-content {
     color: transparent;
 }
 
-/* Hover effect for lines */
 .line-horizontal:hover:not(.active):not(.line-blocked)::before {
     content: "──";
-    color: #ff69b4; /* Pink */
+    color: #ff69b4;
     animation: pulse;
 }
 
 .line-vertical:hover:not(.active):not(.line-blocked)::before {
     content: "│";
-    color: #ff69b4; /* Pink */
+    color: #ff69b4;
     animation: pulse;
 }
 
-/* Active line styles */
 .line-horizontal.active::before,
 .line-vertical.active::before {
     content: attr(data-content);
-    color: #ff69b4; /* Pink */
+    color: #ff69b4;
 }
 
-/* Blocked line styles */
 .line-horizontal.line-blocked::before,
 .line-vertical.line-blocked::before {
     content: "××";
     color: #ff0000;
 }
 
-/* Pulse animation */
 @keyframes pulse {
     0% { opacity: 1; }
     50% { opacity: 0.5; }
     100% { opacity: 1; }
 }
 
-/* Responsive */
 @media (max-width: 480px) {
     .main {
         width: 90%;

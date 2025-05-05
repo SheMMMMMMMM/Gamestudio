@@ -5,7 +5,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 
 @Controller
 public class RulesController {
-
     @GetMapping("/rules")
     public String showRules() {
         return "rules";

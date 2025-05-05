@@ -20,7 +20,6 @@ public class Comment implements Serializable {
     @Id
     @GeneratedValue
     private int ident;
-
     private String game;
     private String player;
     private String comment;

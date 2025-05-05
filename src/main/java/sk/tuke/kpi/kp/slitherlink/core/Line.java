@@ -11,7 +11,6 @@ public class Line {
         this.cols = cols;
         this.lines = new boolean[rows][cols][4];
     }
-
     public boolean addLine(int row, int col, String direction) {
         if (row < 0 || row >= rows || col < 0 || col >= cols) {
             ConsoleUI.printInvalidCoordinates(row, col);

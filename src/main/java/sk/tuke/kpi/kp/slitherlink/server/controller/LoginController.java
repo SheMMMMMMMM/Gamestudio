@@ -40,11 +40,11 @@ public class LoginController {
     public String logout(HttpSession session) {
         System.out.println("Logging out user from /game. Session ID before invalidation: " + session.getId());
         try {
-            session.invalidate(); // Інвалідуємо сесію
+            session.invalidate();
             System.out.println("Session invalidated successfully.");
         } catch (IllegalStateException e) {
             System.out.println("Error: Session already invalidated or not active: " + e.getMessage());
         }
-        return "redirect:/home"; // Перенаправлення на /home для /game
+        return "redirect:/home";
     }
 }

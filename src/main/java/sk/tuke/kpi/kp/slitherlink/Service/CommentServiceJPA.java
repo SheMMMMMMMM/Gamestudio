@@ -34,7 +34,6 @@ public class CommentServiceJPA implements CommentService {
             throw new CommentException("Error fetching comments");
         }
     }
-
     @Override
     public void reset() throws CommentException {
         try {

@@ -23,7 +23,6 @@ public class Score implements Serializable {
     private String game;
     private String player;
     private int points;
-
     @Column(name = "playedon")
     @Temporal(TemporalType.TIMESTAMP)
     @JsonFormat(pattern = "yyyy-MM-dd'T'HH:mm:ss")

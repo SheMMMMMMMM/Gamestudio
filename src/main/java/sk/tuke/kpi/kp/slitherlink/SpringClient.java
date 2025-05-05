@@ -1,5 +1,4 @@
 package sk.tuke.kpi.kp.slitherlink;
-
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.WebApplicationType;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

@@ -35,7 +35,6 @@ public class RatingServiceRest {
             return ResponseEntity.ok(0);
         }
     }
-
     @GetMapping("/{game}/{player}")
     public ResponseEntity<Integer> getRating(@PathVariable String game, @PathVariable String player) {
         try {

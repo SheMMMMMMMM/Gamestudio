@@ -9,3 +9,4 @@ public interface ScoreService {
     void reset() throws ScoreException;
     List<Score> getAllScores();
 }
+

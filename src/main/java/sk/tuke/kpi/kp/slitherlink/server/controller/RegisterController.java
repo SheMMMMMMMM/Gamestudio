@@ -10,7 +10,6 @@ import sk.tuke.kpi.kp.slitherlink.Service.UserService;
 
 @Controller
 public class RegisterController {
-
     @Autowired
     private UserService userService;
 

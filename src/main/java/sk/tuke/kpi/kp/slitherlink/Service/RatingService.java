@@ -11,3 +11,4 @@ public interface RatingService {
     void reset() throws RatingException;
     void addRating(Rating rating) throws RatingException;
 }
+

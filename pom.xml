@@ -31,7 +31,6 @@
     <properties>
         <java.version>15</java.version>
     </properties>
-
     <dependencies>
         <!-- Spring Boot JPA -->
         <dependency>

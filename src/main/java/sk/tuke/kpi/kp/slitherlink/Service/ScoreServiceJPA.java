@@ -1,5 +1,4 @@
 package sk.tuke.kpi.kp.slitherlink.Service;
-
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.LockModeType;
 import jakarta.persistence.PersistenceContext;

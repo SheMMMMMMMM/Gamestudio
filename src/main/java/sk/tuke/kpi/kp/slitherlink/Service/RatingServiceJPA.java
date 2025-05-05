@@ -33,7 +33,6 @@ public class RatingServiceJPA implements RatingService {
             throw new RatingException("Error saving rating", e);
         }
     }
-
     @Override
     public void setRating(Rating rating) throws RatingException {
         try {

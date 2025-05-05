@@ -34,3 +34,4 @@ public class ScoreServiceRestClient implements ScoreService {
         return Arrays.asList(restTemplate.getForEntity(url + "/all", Score[].class).getBody());
     }
 }
+

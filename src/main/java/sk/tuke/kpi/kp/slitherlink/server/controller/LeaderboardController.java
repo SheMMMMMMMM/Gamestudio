@@ -13,7 +13,6 @@ import java.util.List;
 
 @Controller
 public class LeaderboardController {
-
     private static final Logger logger = LoggerFactory.getLogger(LeaderboardController.class);
 
     @Autowired

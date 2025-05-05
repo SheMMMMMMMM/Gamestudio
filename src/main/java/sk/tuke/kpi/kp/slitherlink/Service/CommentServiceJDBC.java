@@ -28,7 +28,6 @@ public class CommentServiceJDBC implements CommentService {
             throw new CommentException("Problem inserting comment", e);
         }
     }
-
     @Override
     public List<Comment> getComments(String game) {
         try (Connection connection = DriverManager.getConnection(URL, USER, PASSWORD);

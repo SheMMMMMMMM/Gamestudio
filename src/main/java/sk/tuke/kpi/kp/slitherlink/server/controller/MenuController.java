@@ -12,25 +12,23 @@ import org.springframework.web.context.WebApplicationContext;
 @RequestMapping("/start")
 public class MenuController {
 
-    // Відображення початкової сторінки
     @GetMapping("/start")
     public String showMenu() {
-        return "index"; // Повертає HTML шаблон для початкового меню
+        return "index";
     }
 
-    // Переходи на сторінки гри, коментарів та рейтингів
     @GetMapping("/game")
     public String startGame() {
-        return "game"; // Повертає сторінку гри
+        return "game";
     }
 
     @GetMapping("/comments")
     public String showComments() {
-        return "comments"; // Повертає сторінку коментарів
+        return "comments";
     }
 
     @GetMapping("/rating")
     public String showRating() {
-        return "rating"; // Повертає сторінку рейтингу
+        return "rating";
     }
 }

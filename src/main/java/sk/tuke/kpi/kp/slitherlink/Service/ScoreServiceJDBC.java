@@ -28,7 +28,6 @@ public class ScoreServiceJDBC implements ScoreService {
             throw new ScoreException("Problem inserting score", e);
         }
     }
-
     @Override
     public List<Score> getTopScores(String game) {
         try (Connection connection = DriverManager.getConnection(URL, USER, PASSWORD);

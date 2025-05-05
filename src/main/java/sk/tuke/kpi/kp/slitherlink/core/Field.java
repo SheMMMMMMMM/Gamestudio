@@ -206,7 +206,6 @@ public class Field {
                 break;
         }
     }
-
     public void clearMap() {
         for (int i = 0; i < horizontalLines.length; i++) {
             for (int j = 0; j < horizontalLines[i].length; j++) {

@@ -266,7 +266,6 @@ public class Game {
                 ConsoleUI.printInvalidCommand();
                 return;
         }
-
         field.printField();
 
         if (field.checkVictory(123)) {

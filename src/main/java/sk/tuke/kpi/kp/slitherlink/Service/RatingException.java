@@ -8,3 +8,4 @@ public class RatingException extends RuntimeException {
         super(message, cause);
     }
 }
+

@@ -33,7 +33,6 @@ public class RatingServiceRestClient implements RatingService {
     public int getRating(String game, String player) {
         return restTemplate.getForEntity(url + "/" + game + "/" + player, Integer.class).getBody();
     }
-
     @Override
     public void reset() {
         throw new UnsupportedOperationException("Not supported via web service");

@@ -15,7 +15,6 @@ Content-Type: application/json
 ### add comment
 POST http://localhost:8082/api/comments
 Content-Type: application/json
-
 {
   "player": "Anton",
   "game" : "Slitherlink",

@@ -16,6 +16,6 @@ public class HomeController {
         } else {
             model.addAttribute("playerName", playerName);
         }
-        return "home"; // Завжди повертаємо сторінку home
+        return "home";
     }
 }

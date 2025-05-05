@@ -21,7 +21,6 @@ public class ConcreteScoreService implements ScoreService {
     public List<Score> getTopScores(String game) throws ScoreException {
         return new ArrayList<>();
     }
-
     @Override
     public void reset() throws ScoreException {
     }
