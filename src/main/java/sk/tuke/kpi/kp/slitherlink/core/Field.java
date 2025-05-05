@@ -2,6 +2,7 @@ package sk.tuke.kpi.kp.slitherlink.core;
 
 import sk.tuke.kpi.kp.slitherlink.consoleui.ConsoleUI;
 
+
 public class Field {
     private final int rows;
     private final int cols;
@@ -29,6 +30,26 @@ public class Field {
         }
     }
 
+    public int getRows() {
+        return rows;
+    }
+
+    public int getCols() {
+        return cols;
+    }
+
+    public String[][] getFieldValues() {
+        return fieldValues;
+    }
+
+    public String[][] getHorizontalLines() {
+        return horizontalLines;
+    }
+
+    public String[][] getVerticalLines() {
+        return verticalLines;
+    }
+
     public int getMapIndex() {
         return mapIndex;
     }
@@ -45,21 +66,25 @@ public class Field {
         this.difficulty = difficulty;
     }
 
-    public boolean checkVictory() {
+    public boolean checkVictory(long elapsedTime) { // Додаємо параметр elapsedTime
         ConsoleUI.printCheckStart();
         String[][] winningMap = Maps.getWinningMap(difficulty, mapIndex);
 
+        // Перевірка кожної клітинки
         for (int i = 0; i < rows; i++) {
             for (int j = 0; j < cols; j++) {
                 int actualLines = countLinesAroundCell(i, j);
                 int expectedLines = Integer.parseInt(winningMap[i][j]);
 
+                // Якщо є хоча б одне невідповідність, перемоги немає
                 if (actualLines != expectedLines) {
                     return false;
                 }
             }
         }
 
+        // Якщо перемога підтверджена
+        System.out.println("Победа підтверждена!");
         return true;
     }
 
@@ -106,6 +131,7 @@ public class Field {
             fieldValues[row][col] = value;
         }
     }
+
     public void removeLine(int row, int col, String direction) {
         boolean success = lineManager.delLine(row, col, direction);
 
@@ -148,10 +174,8 @@ public class Field {
                 default:
                     break;
             }
-
         }
     }
-
 
     public void removeLineColor(int row, int col, String direction) {
         switch (direction) {
@@ -179,10 +203,10 @@ public class Field {
                 break;
 
             default:
-                //System.out.println("Incorrect line direction!");
                 break;
         }
     }
+
     public void clearMap() {
         for (int i = 0; i < horizontalLines.length; i++) {
             for (int j = 0; j < horizontalLines[i].length; j++) {
@@ -204,45 +228,60 @@ public class Field {
             }
         }
 
+        lineManager.clearLines(); // Скидаємо стан ліній у lineManager
+
         ConsoleUI.printAllLinesCleared();
     }
+
     public boolean drawLine(int row, int col, String direction) {
-        boolean success = lineManager.addLine(row, col, direction);
-        if (success) {
-            updateLineColor(row, col, direction);
-
-            switch (direction) {
-                case "N":
-                    if (row > 0) {
-                        lines[row - 1][col][1] = true;
-                    }
-                    lines[row][col][0] = true;
-                    break;
-
-                case "S":
-                    if (row < rows - 1) {
-                        lines[row + 1][col][0] = true;
-                    }
-                    lines[row][col][1] = true;
-                    break;
-
-                case "W":
-                    if (col > 0) {
-                        lines[row][col - 1][2] = true;
-                    }
-                    lines[row][col][3] = true;
-                    break;
-
-                case "E":
-                    if (col < cols - 1) {
-                        lines[row][col + 1][3] = true;
-                    }
-                    lines[row][col][2] = true;
-                    break;
+        // Змінимо тут логіку для коректного визначення напрямку
+        String convertedDirection = direction;
+        if ("horizontal".equals(direction)) {
+            if (row < rows) {
+                convertedDirection = "N";  // Верхня лінія
+            } else {
+                convertedDirection = "S";  // Нижня лінія
+                row--; // Зменшуємо row для коректного малювання нижньої лінії
             }
+        } else if ("vertical".equals(direction)) {
+            if (col < cols) {
+                convertedDirection = "W";  // Ліва лінія
+            } else {
+                convertedDirection = "E";  // Права лінія
+                col--; // Зменшуємо col для коректного малювання правої лінії
+            }
+        }
+
+        // Тепер ми викликаємо addLine для малювання
+        boolean success = lineManager.addLine(row, col, convertedDirection);
+        if (success) {
+            updateLineColor(row, col, convertedDirection);
+            // Оновлюємо стан ліній
+            updateLineState(row, col, convertedDirection);
         }
         return success;
     }
+    private void updateLineState(int row, int col, String direction) {
+        switch (direction) {
+            case "N":
+                lines[row][col][0] = true; // Північ
+                if (row > 0) lines[row - 1][col][1] = true; // Верхня лінія для нижньої клітинки
+                break;
+            case "S":
+                lines[row][col][1] = true; // Південь
+                if (row < rows - 1) lines[row + 1][col][0] = true; // Нижня лінія для верхньої клітинки
+                break;
+            case "W":
+                lines[row][col][2] = true; // Захід
+                if (col > 0) lines[row][col - 1][3] = true; // Ліва лінія для правої клітинки
+                break;
+            case "E":
+                lines[row][col][3] = true; // Схід
+                if (col < cols - 1) lines[row][col + 1][2] = true; // Права лінія для лівої клітинки
+                break;
+        }
+    }
+
     public boolean blockLine(int row, int col, String direction) {
         boolean success = lineManager.addLine(row, col, direction);
         if (success) {
@@ -277,7 +316,6 @@ public class Field {
                 break;
 
             default:
-                //System.out.println("Incorrect line direction!");
                 break;
         }
     }
@@ -308,11 +346,9 @@ public class Field {
                 break;
 
             default:
-                //System.out.println("Incorrect line direction!");
                 break;
         }
     }
-
 
     public void printField() {
         System.out.print("      ");

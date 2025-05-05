@@ -4,6 +4,7 @@ import jakarta.persistence.EntityManager;
 import jakarta.persistence.LockModeType;
 import jakarta.persistence.PersistenceContext;
 import jakarta.transaction.Transactional;
+import org.springframework.context.annotation.Primary;
 import org.springframework.stereotype.Service;
 import sk.tuke.kpi.kp.slitherlink.Entity.Score;
 import java.util.Date;
@@ -11,6 +12,7 @@ import java.util.List;
 
 @Service
 @Transactional
+@Primary
 public class ScoreServiceJPA implements ScoreService {
     @PersistenceContext
     private EntityManager entityManager;
@@ -43,10 +45,12 @@ public class ScoreServiceJPA implements ScoreService {
     @Override
     public List<Score> getTopScores(String game) throws ScoreException {
         try {
-            return entityManager.createNamedQuery("Score.getTopScores", Score.class)
+            List<Score> scores = entityManager.createNamedQuery("Score.getTopScores", Score.class)
                     .setParameter("game", game)
                     .setMaxResults(10)
                     .getResultList();
+            System.out.println("Scores for game " + game + ": " + scores);
+            return scores;
         } catch (Exception e) {
             throw new ScoreException("Error fetching scores");
         }

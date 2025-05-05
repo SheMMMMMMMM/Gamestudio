@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Вхід</title>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" href="/css/home.css">
+    <link href="https://fonts.googleapis.com/css2?family=Jost:wght@500&display=swap" rel="stylesheet">
+</head>
+<body class="dark-theme">
+<div class="main">
+    <!-- Перемикач тем -->
+    <div class="theme-switcher">
+        <label class="switch">
+            <input type="checkbox" id="themeToggle">
+            <span class="slider round"></span>
+        </label>
+        <span id="themeLabel">Dark Mode</span>
+    </div>
+
+    <div class="signup">
+        <form method="post" action="/login">
+            <label for="chk">Вхід</label>
+            <div>
+                <label for="username">Ім'я користувача:</label>
+                <input type="text" id="username" name="username" required />
+            </div>
+            <div>
+                <label for="password">Пароль:</label>
+                <input type="password" id="password" name="password" required />
+            </div>
+            <div>
+                <button type="submit">Увійти</button>
+            </div>
+        </form>
+        <p>Ще не зареєстровані? <a href="/register">Зареєструватися</a></p>
+        <!-- Якщо є помилка, відображаємо її -->
+        <div th:if="${error != null}" style="color: red; text-align: center;">
+            <p th:text="${error}"></p>
+        </div>
+    </div>
+</div>
+
+<!-- JavaScript для управління темами -->
+<script>
+    // Завантаження збереженої теми
+    document.addEventListener("DOMContentLoaded", function() {
+        const theme = localStorage.getItem("theme") || "dark";
+        document.body.className = theme + "-theme";
+        document.getElementById("themeToggle").checked = theme === "light";
+        document.getElementById("themeLabel").textContent = theme === "light" ? "Light Mode" : "Dark Mode";
+    });
+
+    // Перемикання теми
+    document.getElementById("themeToggle").addEventListener("change", function() {
+        const isLight = this.checked;
+        document.body.className = isLight ? "light-theme" : "dark-theme";
+        document.getElementById("themeLabel").textContent = isLight ? "Light Mode" : "Dark Mode";
+        localStorage.setItem("theme", isLight ? "light" : "dark");
+    });
+</script>
+</body>
+</html>

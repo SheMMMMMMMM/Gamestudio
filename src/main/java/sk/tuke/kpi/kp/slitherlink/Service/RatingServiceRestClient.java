@@ -13,7 +13,7 @@ public class RatingServiceRestClient implements RatingService {
 
     @Override
     public void addRating(Rating rating) {
-        restTemplate.postForEntity(url, rating, Rating.class); // Add rating via REST API
+        restTemplate.postForEntity(url, rating, Rating.class);
     }
 
     @Override

@@ -269,7 +269,7 @@ public class Game {
 
         field.printField();
 
-        if (field.checkVictory()) {
+        if (field.checkVictory(123)) {
             gameInProgress = false;
             score = (System.currentTimeMillis() - startTime) / 1000;
             ConsoleUI.printVictoryMessage(score, formatTime(score));

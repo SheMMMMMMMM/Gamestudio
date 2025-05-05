@@ -43,15 +43,26 @@ public class Line {
         return true;
     }
 
+    public void clearLines() {
+        for (int i = 0; i < rows; i++) {
+            for (int j = 0; j < cols; j++) {
+                for (int d = 0; d < 4; d++) {
+                    lines[i][j][d] = false;
+                }
+            }
+        }
+    }
+
     private int getDirectionFromString(String direction) {
         return switch (direction) {
             case "N" -> 0; // Північ
             case "S" -> 1; // Південь
             case "W" -> 2; // Захід
             case "E" -> 3; // Схід
-            default -> -1;
+            default -> -2;
         };
     }
+
     public boolean[][][] getLines() {
         return lines;
     }

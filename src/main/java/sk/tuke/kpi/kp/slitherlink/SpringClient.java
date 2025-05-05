@@ -15,7 +15,7 @@ import sk.tuke.kpi.kp.slitherlink.game.Game;
 @SpringBootApplication
 @Configuration
 @ComponentScan(excludeFilters = @ComponentScan.Filter(type = FilterType.REGEX,
-        pattern = "sk.tuke.gamestudio.server.*"))
+        pattern = "sk.tuke.kpi.kp.slitherlink.Service"))
 public class SpringClient implements CommandLineRunner {
     public static void main(String[] args) {
         new SpringApplicationBuilder(SpringClient.class).web(WebApplicationType.NONE).run(args);
@@ -43,6 +43,9 @@ public class SpringClient implements CommandLineRunner {
     }
     @Bean
     public RestTemplate restTemplate() {return new RestTemplate();}
+    @Bean
+    public UserService userService() {
+        return new UserService();
+    }
 }
 
-// шо таке Bean Transactional Configuration Autowired Service

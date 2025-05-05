@@ -64,7 +64,7 @@ public class FieldTests {
         field.setDifficulty(1);
         field.setMapIndex(0);
 
-        assertFalse(field.checkVictory());
+        assertFalse(field.checkVictory(123));
     }
 
     private String getCellValue(Field field, int row, int col) {

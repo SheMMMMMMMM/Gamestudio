@@ -2,20 +2,19 @@ package sk.tuke.kpi.kp.slitherlink.core;
 
 public class Maps {
 
-    public static final String[][][] easyMaps = new String[6][][];
+    public static final String[][][] easyMaps = new String[12][][];
     public static final String[][][] mediumMaps = new String[6][][];
     public static final String[][][] hardMaps = new String[6][][];
 
-    public static final String[][][] easyWinning = new String[6][][];
+    public static final String[][][] easyWinning = new String[12][][];
     public static final String[][][] mediumWinning = new String[6][][];
     public static final String[][][] hardWinning = new String[6][][];
-
 
     public static final String[][][] HorizontalLines = new String[1][][];
     public static final String[][][] VerticalLines = new String[1][][];
 
-
     static {
+        // Easy Maps (0-11)
         easyMaps[0] = new String[][] {
                 {"•", "3", "2", "1", "2", "•"},
                 {"•", "0", "1", "•", "•", "1"},
@@ -25,7 +24,6 @@ public class Maps {
                 {"3", "•", "•", "•", "2", "•"},
                 {"3", "•", "•", "2", "3", "•"},
                 {"•", "3", "3", "2", "2", "•"},
-
         };
         easyWinning[0] = new String[][] {
                 {"2", "3", "2", "1", "2", "3"},
@@ -36,7 +34,6 @@ public class Maps {
                 {"3", "2", "2", "2", "2", "2"},
                 {"3", "0", "2", "2", "3", "2"},
                 {"2", "3", "3", "2", "2", "2"},
-
         };
 
         easyMaps[1] = new String[][]{
@@ -102,7 +99,6 @@ public class Maps {
                 {"3", "2", "2", "3", "1", "3"},
         };
 
-
         easyMaps[4] = new String[][]{
                 {"•", "2", "2", "•", "2", "•"},
                 {"•", "•", "1", "•", "•", "2"},
@@ -145,9 +141,133 @@ public class Maps {
                 {"3", "2", "1", "2", "2", "2"},
         };
 
+        easyMaps[6] = new String[][]{
+                {"•", "1", "•", "•", "•", "0"},
+                {"3", "•", "3", "2", "•", "0"},
+                {"•", "•", "1", "•", "3", "•"},
+                {"2", "0", "•", "•", "3", "•"},
+                {"•", "0", "•", "•", "1", "2"},
+                {"•", "0", "•", "3", "•", "•"},
+                {"3", "•", "2", "1", "•", "1"},
+                {"3", "•", "•", "•", "0", "•"},
+        };
+        easyWinning[6] = new String[][]{
+                {"1", "1", "1", "3", "1", "0"},
+                {"3", "2", "3", "2", "2", "0"},
+                {"3", "1", "1", "0", "3", "1"},
+                {"2", "0", "0", "1", "3", "1"},
+                {"1", "0", "0", "1", "1", "2"},
+                {"2", "0", "1", "3", "2", "2"},
+                {"3", "1", "2", "1", "1", "1"},
+                {"3", "2", "2", "0", "0", "0"},
+        };
 
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+        easyMaps[7] = new String[][]{
+                {"•", "•", "1", "•", "3", "1"},
+                {"3", "•", "3", "•", "3", "•"},
+                {"2", "1", "2", "•", "1", "2"},
+                {"•", "2", "•", "•", "1", "•"},
+                {"1", "2", "•", "•", "•", "•"},
+                {"2", "•", "1", "•", "•", "•"},
+                {"3", "•", "•", "3", "1", "1"},
+                {"•", "•", "3", "•", "2", "•"},
+        };
+        easyWinning[7] = new String[][]{
+                {"1", "1", "1", "2", "3", "1"},
+                {"3", "2", "3", "2", "3", "1"},
+                {"2", "1", "2", "0", "1", "2"},
+                {"1", "2", "3", "2", "1", "2"},
+                {"1", "2", "2", "2", "2", "2"},
+                {"2", "1", "1", "2", "1", "2"},
+                {"3", "1", "1", "3", "1", "1"},
+                {"1", "2", "3", "2", "2", "2"},
+        };
 
+        easyMaps[8] = new String[][]{
+                {"•", "2", "•", "•", "•", "2"},
+                {"•", "0", "3", "2", "•", "2"},
+                {"2", "1", "•", "2", "2", "2"},
+                {"•", "•", "•", "2", "•", "1"},
+                {"•", "0", "•", "•", "1", "2"},
+                {"•", "1", "•", "•", "•", "2"},
+                {"1", "•", "•", "2", "2", "2"},
+                {"0", "2", "•", "•", "•", "1"},
+        };
+        easyWinning[8] = new String[][]{
+                {"2", "2", "2", "1", "2", "2"},
+                {"1", "0", "3", "2", "1", "2"},
+                {"2", "1", "2", "2", "2", "2"},
+                {"3", "2", "3", "2", "1", "1"},
+                {"3", "0", "1", "1", "1", "2"},
+                {"2", "1", "1", "3", "1", "2"},
+                {"1", "2", "1", "2", "2", "2"},
+                {"0", "2", "3", "1", "1", "1"},
+        };
+
+        easyMaps[9] = new String[][]{
+                {"3", "3", "•", "1", "•", "1"},
+                {"2", "•", "•", "0", "•", "1"},
+                {"1", "•", "•", "•", "1", "•"},
+                {"2", "•", "1", "•", "1", "1"},
+                {"•", "1", "•", "2", "1", "•"},
+                {"2", "1", "•", "•", "2", "•"},
+                {"2", "•", "1", "•", "1", "•"},
+                {"•", "1", "•", "•", "3", "•"},
+        };
+        easyWinning[9] = new String[][]{
+                {"3", "3", "2", "1", "2", "1"},
+                {"2", "2", "0", "0", "1", "1"},
+                {"1", "3", "1", "0", "1", "1"},
+                {"2", "2", "1", "0", "1", "1"},
+                {"2", "1", "3", "2", "1", "1"},
+                {"2", "1", "1", "2", "2", "2"},
+                {"2", "3", "1", "1", "1", "3"},
+                {"0", "1", "0", "1", "3", "2"},
+        };
+
+        easyMaps[10] = new String[][]{
+                {"0", "1", "3", "1", "2", "•"},
+                {"0", "•", "•", "1", "1", "•"},
+                {"•", "•", "•", "•", "•", "3"},
+                {"1", "•", "•", "1", "2", "•"},
+                {"1", "•", "•", "2", "2", "2"},
+                {"•", "1", "•", "•", "0", "1"},
+                {"•", "2", "•", "0", "•", "•"},
+                {"•", "•", "•", "3", "•", "3"},
+        };
+        easyWinning[10] = new String[][]{
+                {"0", "1", "3", "1", "2", "1"},
+                {"0", "1", "3", "1", "1", "2"},
+                {"1", "2", "2", "1", "1", "3"},
+                {"1", "2", "2", "1", "2", "2"},
+                {"1", "2", "2", "2", "2", "2"},
+                {"1", "1", "1", "1", "0", "1"},
+                {"1", "2", "1", "0", "1", "1"},
+                {"0", "1", "2", "3", "3", "3"},
+        };
+
+        easyMaps[11] = new String[][]{
+                {"•", "2", "2", "•", "3", "•"},
+                {"•", "•", "3", "•", "•", "•"},
+                {"2", "•", "2", "2", "•", "•"},
+                {"1", "3", "•", "•", "•", "•"},
+                {"•", "•", "•", "1", "1", "1"},
+                {"1", "0", "•", "•", "•", "•"},
+                {"•", "•", "3", "1", "1", "3"},
+                {"2", "2", "3", "2", "•", "•"},
+        };
+        easyWinning[11] = new String[][]{
+                {"2", "2", "2", "2", "3", "1"},
+                {"3", "1", "3", "1", "1", "0"},
+                {"2", "2", "2", "2", "1", "0"},
+                {"1", "3", "1", "1", "2", "1"},
+                {"2", "1", "0", "1", "1", "1"},
+                {"1", "0", "2", "3", "2", "2"},
+                {"2", "1", "3", "1", "1", "3"},
+                {"2", "2", "3", "2", "3", "2"},
+        };
+
+        // Medium Maps (0-5)
         mediumMaps[0] = new String[][]{
                 {"•", "•", "3", "3", "•", "3"},
                 {"3", "•", "2", "•", "•", "1"},
@@ -157,7 +277,6 @@ public class Maps {
                 {"3", "•", "•", "2", "•", "2"},
                 {"•", "•", "•", "2", "3", "•"},
                 {"•", "1", "•", "•", "•", "2"},
-
         };
         mediumWinning[0] = new String[][]{
                 {"2", "3", "3", "3", "3", "3"},
@@ -168,10 +287,7 @@ public class Maps {
                 {"3", "2", "2", "2", "2", "2"},
                 {"3", "2", "1", "2", "3", "2"},
                 {"1", "1", "1", "3", "2", "2"},
-
         };
-
-
 
         mediumMaps[1] = new String[][]{
                 {"•", "•", "•", "•", "•", "•"},
@@ -194,10 +310,6 @@ public class Maps {
                 {"3", "3", "2", "1", "1", "3"},
         };
 
-
-
-
-
         mediumMaps[2] = new String[][]{
                 {"•", "•", "•", "3", "3", "•"},
                 {"•", "3", "•", "•", "•", "1"},
@@ -218,8 +330,6 @@ public class Maps {
                 {"2", "2", "2", "2", "2", "3"},
                 {"3", "2", "2", "1", "1", "1"},
         };
-
-
 
         mediumMaps[3] = new String[][]{
                 {"•", "•", "2", "•", "•", "•"},
@@ -242,8 +352,6 @@ public class Maps {
                 {"1", "3", "2", "2", "2", "3"},
         };
 
-
-
         mediumMaps[4] = new String[][]{
                 {"•", "•", "2", "2", "•", "•"},
                 {"2", "•", "•", "•", "1", "2"},
@@ -264,10 +372,6 @@ public class Maps {
                 {"3", "1", "0", "1", "1", "1"},
                 {"3", "1", "1", "2", "3", "3"},
         };
-
-
-
-
 
         mediumMaps[5] = new String[][]{
                 {"•", "2", "3", "•", "2", "•"},
@@ -290,10 +394,7 @@ public class Maps {
                 {"2", "3", "2", "3", "2", "3"},
         };
 
-
-
-
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+        // Hard Maps (0-5)
         hardMaps[0] = new String[][]{
                 {"3", "•", "2", "2", "•", "3"},
                 {"•", "•", "2", "2", "3", "•"},
@@ -314,8 +415,6 @@ public class Maps {
                 {"3", "1", "2", "3", "2", "3"},
                 {"2", "2", "2", "2", "1", "3"},
         };
-
-
 
         hardMaps[1] = new String[][]{
                 {"•", "2", "1", "2", "•", "3"},
@@ -338,9 +437,6 @@ public class Maps {
                 {"2", "3", "3", "3", "3", "3"},
         };
 
-
-
-
         hardMaps[2] = new String[][]{
                 {"3", "•", "•", "•", "•", "3"},
                 {"•", "•", "2", "•", "•", "1"},
@@ -361,8 +457,6 @@ public class Maps {
                 {"2", "2", "3", "1", "2", "2"},
                 {"3", "2", "2", "3", "3", "3"},
         };
-
-
 
         hardMaps[3] = new String[][]{
                 {"3", "•", "3", "•", "3", "•"},
@@ -385,7 +479,6 @@ public class Maps {
                 {"3", "2", "2", "3", "3", "3"},
         };
 
-
         hardMaps[4] = new String[][]{
                 {"3", "•", "3", "3", "3", "•"},
                 {"3", "1", "•", "•", "•", "•"},
@@ -406,7 +499,6 @@ public class Maps {
                 {"3", "3", "2", "2", "2", "2"},
                 {"2", "2", "2", "2", "1", "3"},
         };
-
 
         hardMaps[5] = new String[][]{
                 {"3", "3", "•", "2", "2", "3"},
@@ -452,50 +544,65 @@ public class Maps {
                 {"|", "|", "|", "|", "|", "|", "|"}
         };
     }
+
     public static String[][] getMap(int difficulty, int mapIndex) {
-        if (difficulty == 1) {
+        if (difficulty == 1) { // Easy
             if (mapIndex >= 0 && mapIndex < easyMaps.length) {
                 return easyMaps[mapIndex];
             }
-        } else if (difficulty == 2) {
+        } else if (difficulty == 2) { // Medium
             if (mapIndex >= 0 && mapIndex < mediumMaps.length) {
                 return mediumMaps[mapIndex];
             }
-        } else if (difficulty == 3) {
+        } else if (difficulty == 3) { // Hard
             if (mapIndex >= 0 && mapIndex < hardMaps.length) {
                 return hardMaps[mapIndex];
             }
         }
-        return null;
-    }
-    public static String[][] getWinningMap(int difficulty, int mapIndex) {
 
-        if (difficulty == 1) {
+        // Повертаємо порожню мапу, якщо індекс або рівень некоректні
+        String[][] placeholderMap = new String[8][6];
+        for (int i = 0; i < 8; i++) {
+            for (int j = 0; j < 6; j++) {
+                placeholderMap[i][j] = "•";
+            }
+        }
+        return placeholderMap;
+    }
+
+    public static String[][] getWinningMap(int difficulty, int mapIndex) {
+        if (difficulty == 1) { // Easy
             if (mapIndex >= 0 && mapIndex < easyWinning.length) {
                 return easyWinning[mapIndex];
             }
-        } else if (difficulty == 2) {
+        } else if (difficulty == 2) { // Medium
             if (mapIndex >= 0 && mapIndex < mediumWinning.length) {
                 return mediumWinning[mapIndex];
             }
-        } else if (difficulty == 3) {
+        } else if (difficulty == 3) { // Hard
             if (mapIndex >= 0 && mapIndex < hardWinning.length) {
                 return hardWinning[mapIndex];
             }
         }
 
-        return null;
+        // Повертаємо порожню мапу, якщо індекс або рівень некоректні
+        String[][] placeholderMap = new String[8][6];
+        for (int i = 0; i < 8; i++) {
+            for (int j = 0; j < 6; j++) {
+                placeholderMap[i][j] = "0";
+            }
+        }
+        return placeholderMap;
     }
+
     public static int getMapCount(int difficulty) {
         if (difficulty == 1) {
-            return easyMaps.length;
+            return easyMaps.length; // 12 мап для Easy
         } else if (difficulty == 2) {
-            return mediumMaps.length;
+            return mediumMaps.length; // 6 мап для Medium
         } else if (difficulty == 3) {
-            return hardMaps.length;
+            return hardMaps.length; // 6 мап для Hard
         }
         return 0;
     }
-
 }
-

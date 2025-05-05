@@ -1,42 +1,42 @@
 ### add score
-POST http://localhost:8080/api/score
+    POST http://localhost:8082/api/score
 Content-Type: application/json
 
 {
   "game": "Slitherlink",
-  "player": "jozef",
-  "points": 344,
+  "player": "Anton",
+  "points": 322,
   "playedon": "2025-04-08T22:09:44.57"
 }
 ###
-GET http://localhost:8080/api/score
+GET http://localhost:8082/api/score
 Content-Type: application/json
 
 ### add comment
-POST http://localhost:8080/api/comments
+POST http://localhost:8082/api/comments
 Content-Type: application/json
 
 {
-  "player": "jozef",
+  "player": "Anton",
   "game" : "Slitherlink",
-  "comment": "adadadad",
-  "commentedOn": "2025-04-08T22:09:44.57"
+  "comment": "dalshe co",
+  "commentedOn": "2025-04-23T12:55:21.57"
 }
 
 ###
-GET http://localhost:8080/api/comments/Slitherlink
+GET http://localhost:8082/api/comments/Slitherlink
 Accept: application/json
 
 ### add rating
-POST http://localhost:8080/api/ratings
+POST http://localhost:8082/api/ratings
 Content-Type: application/json
 
 {
   "game": "Slitherlink",
-  "player": "jozef",
+  "player": "Anton",
   "ratedOn": "2025-04-08T13:00:00",
   "rating": 5
 }
 ###
-GET http://localhost:8080/api/ratings/Slitherlink/jozef
+GET http://localhost:8082/api/ratings/Slitherlink/jozef
 Accept: application/json
