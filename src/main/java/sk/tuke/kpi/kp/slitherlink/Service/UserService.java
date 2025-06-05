@@ -31,14 +31,14 @@ public class UserService {
     }
 
     public void registerUser(String player, String password) {
-        System.out.println("Реєстрація користувача: " + player);
+        System.out.println("User registration: " + player);
         String encodedPassword = passwordEncoder.encode(password);
         User user = new User();
         user.setPlayer(player);
         user.setPassword(encodedPassword);
         user.setCreatedAt(LocalDateTime.now());
         userRepository.save(user);
-        System.out.println("Користувача " + player + " успішно зареєстровано");
+        System.out.println("User " + player + " successfully registered");
     }
 
     public boolean authenticate(String username, String password) {
@@ -50,27 +50,20 @@ public class UserService {
     }
 
     public void updateProgress(String player, Integer level, Map<Integer, List<Integer>> completedMaps) {
-        System.out.println("Оновлення прогресу: player=" + player + ", level=" + level + ", completedMaps=" + completedMaps);
+        System.out.println("Progress update: player=" + player + ", level=" + level + ", completedMaps=" + completedMaps);
 
-        // Отримуємо поточний прогрес гравця
         Progress progress = ProgressRepository.findByPlayerName(player).orElse(new Progress());
 
-        // Оновлюємо рівень
         progress.setLevel(level);
 
-        // Оновлюємо completedMaps для рівня
         Map<Integer, List<Integer>> currentMaps = progress.getCompletedMaps();
         for (Map.Entry<Integer, List<Integer>> entry : completedMaps.entrySet()) {
-            // Якщо рівень ще не існує в мапі, створюємо його
             currentMaps.putIfAbsent(entry.getKey(), new ArrayList<>());
-            // Додаємо нові мапи до існуючих
             currentMaps.get(entry.getKey()).addAll(entry.getValue());
         }
 
-        // Оновлюємо мапу
         progress.setCompletedMaps(currentMaps);
 
-        // Зберігаємо оновлений прогрес у базі даних
         progressRepository.save(progress);
         System.out.println("Прогрес для гравця " + player + " успішно оновлено");
     }

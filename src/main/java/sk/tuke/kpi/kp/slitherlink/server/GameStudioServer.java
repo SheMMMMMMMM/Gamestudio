@@ -27,7 +27,6 @@ public class GameStudioServer {
     public UserService userService() {
         return new UserService();
     }
-    // Добавлено: RestTemplate bean для виклику REST-сервісів
     @Bean
     public RestTemplate restTemplate() {
         return new RestTemplate();

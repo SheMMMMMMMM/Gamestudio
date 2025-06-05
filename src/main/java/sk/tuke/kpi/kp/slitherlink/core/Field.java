@@ -66,17 +66,15 @@ public class Field {
         this.difficulty = difficulty;
     }
 
-    public boolean checkVictory(long elapsedTime) { // Додаємо параметр elapsedTime
+    public boolean checkVictory(long elapsedTime) {
         ConsoleUI.printCheckStart();
         String[][] winningMap = Maps.getWinningMap(difficulty, mapIndex);
 
-        // Перевірка кожної клітинки
         for (int i = 0; i < rows; i++) {
             for (int j = 0; j < cols; j++) {
                 int actualLines = countLinesAroundCell(i, j);
                 int expectedLines = Integer.parseInt(winningMap[i][j]);
 
-                // Якщо є хоча б одне невідповідність, перемоги немає
                 if (actualLines != expectedLines) {
                     return false;
                 }
@@ -177,6 +175,7 @@ public class Field {
         }
     }
 
+
     public void removeLineColor(int row, int col, String direction) {
         switch (direction) {
             case "N": // Північ
@@ -227,35 +226,32 @@ public class Field {
             }
         }
 
-        lineManager.clearLines(); // Скидаємо стан ліній у lineManager
+        lineManager.clearLines();
 
         ConsoleUI.printAllLinesCleared();
     }
 
     public boolean drawLine(int row, int col, String direction) {
-        // Змінимо тут логіку для коректного визначення напрямку
         String convertedDirection = direction;
         if ("horizontal".equals(direction)) {
             if (row < rows) {
-                convertedDirection = "N";  // Верхня лінія
+                convertedDirection = "N";
             } else {
-                convertedDirection = "S";  // Нижня лінія
-                row--; // Зменшуємо row для коректного малювання нижньої лінії
+                convertedDirection = "S";
+                row--;
             }
         } else if ("vertical".equals(direction)) {
             if (col < cols) {
-                convertedDirection = "W";  // Ліва лінія
+                convertedDirection = "W";
             } else {
-                convertedDirection = "E";  // Права лінія
-                col--; // Зменшуємо col для коректного малювання правої лінії
+                convertedDirection = "E";
+                col--;
             }
         }
 
-        // Тепер ми викликаємо addLine для малювання
         boolean success = lineManager.addLine(row, col, convertedDirection);
         if (success) {
             updateLineColor(row, col, convertedDirection);
-            // Оновлюємо стан ліній
             updateLineState(row, col, convertedDirection);
         }
         return success;
@@ -264,19 +260,19 @@ public class Field {
         switch (direction) {
             case "N":
                 lines[row][col][0] = true; // Північ
-                if (row > 0) lines[row - 1][col][1] = true; // Верхня лінія для нижньої клітинки
+                if (row > 0) lines[row - 1][col][1] = true;
                 break;
             case "S":
                 lines[row][col][1] = true; // Південь
-                if (row < rows - 1) lines[row + 1][col][0] = true; // Нижня лінія для верхньої клітинки
+                if (row < rows - 1) lines[row + 1][col][0] = true;
                 break;
             case "W":
                 lines[row][col][2] = true; // Захід
-                if (col > 0) lines[row][col - 1][3] = true; // Ліва лінія для правої клітинки
+                if (col > 0) lines[row][col - 1][3] = true;
                 break;
             case "E":
                 lines[row][col][3] = true; // Схід
-                if (col < cols - 1) lines[row][col + 1][2] = true; // Права лінія для лівої клітинки
+                if (col < cols - 1) lines[row][col + 1][2] = true;
                 break;
         }
     }
@@ -329,6 +325,70 @@ public class Field {
             case "S":
                 if (row >= 0) {
                     horizontalLines[row + 1][col] = "\033[95m\033[1m───\033[0m";
+                /*
+    public void removeLine(int row, int col, String direction) {
+        String convertedDirection = direction;
+        if ("horizontal".equals(direction)) {
+            if (row < rows) {
+                convertedDirection = "N";
+            } else {
+                convertedDirection = "S";
+                row--;
+            }
+        } else if ("vertical".equals(direction)) {
+            if (col < cols) {
+                convertedDirection = "W";
+            } else {
+                convertedDirection = "E";
+                col--;
+            }
+        }
+
+
+        boolean success = lineManager.delLine(row, col, convertedDirection);
+
+        if (success) {
+            removeLineColor(row, col, convertedDirection);
+
+            switch (convertedDirection) {
+                case "N":
+                    if (row > 0) {
+                        lines[row - 1][col][1] = false;
+                        ConsoleUI.printLineRemoval(convertedDirection, row, col);
+                    }
+                    lines[row][col][0] = false;
+                    break;
+
+                case "S":
+                    if (row < rows - 1) {
+                        lines[row + 1][col][0] = false;
+                        ConsoleUI.printLineRemoval(convertedDirection, row, col);
+                    }
+                    lines[row][col][1] = false;
+                    break;
+
+                case "W":
+                    if (col > 0) {
+                        lines[row][col - 1][3] = false;
+                        ConsoleUI.printLineRemoval(convertedDirection, row, col);
+                    }
+                    lines[row][col][2] = false;
+                    break;
+
+                case "E":
+                    if (col < cols - 1) {
+                        lines[row][col + 1][2] = false;
+                        ConsoleUI.printLineRemoval(convertedDirection, row, col);
+                    }
+                    lines[row][col][3] = false;
+                    break;
+
+                default:
+                    break;
+            }
+        }
+    }
+     */
                 }
                 break;
 

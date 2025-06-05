@@ -37,7 +37,6 @@ public class GameController {
     @Autowired
     private UserService userService;
 
-    // Імітація ігрового поля (замініть на вашу реальну логіку)
     private Map<String, Object> gameState = new HashMap<>();
 
     public GameController() {
@@ -90,25 +89,20 @@ public class GameController {
             return "<div>Помилка: Некоректний індекс карти: " + mapIndex + " для складності: " + difficulty + "</div>";
         }
 
-        // Сбрасываем текущее поле
         Field oldField = (Field) session.getAttribute("field");
         if (oldField != null) {
-            oldField.clearMap(); // Очищаем старое поле
+            oldField.clearMap();
         }
 
-        // Очищаем сессию
         session.removeAttribute("field");
         session.removeAttribute("difficulty");
         session.removeAttribute("mapIndex");
         session.removeAttribute("currentLevel");
 
-        // Создаем новое поле
         Field field = generateFieldByDifficulty(difficulty, mapIndex);
         if (field == null) {
             return "<div>Помилка: Не вдалося згенерувати поле для складності: " + difficulty + ", індекс карти: " + mapIndex + "</div>";
         }
-
-        // Обновляем сессию
         session.setAttribute("field", field);
         session.setAttribute("difficulty", difficulty);
         session.setAttribute("mapIndex", mapIndex);
@@ -131,7 +125,6 @@ public class GameController {
             SessionStatus status) {
         System.out.println("restart-session викликано з параметрами: difficulty=" + difficulty + ", level=" + level + ", mapIndex=" + mapIndex);
 
-        // Перевірка правильності параметрів
         if (difficulty < 1 || difficulty > 3 || level != difficulty) {
             return "<div>Помилка: Некоректна складність або рівень: " + difficulty + "</div>";
         }
@@ -142,29 +135,22 @@ public class GameController {
             return "<div>Помилка: Некоректний індекс карти: " + mapIndex + " для складності: " + difficulty + "</div>";
         }
 
-        // Збереження прогресу в БД перед перезапуском
         String playerName = (String) session.getAttribute("playerName");
 
-
-        // Перезапуск сесії
         session.invalidate();
-        session = request.getSession(true);  // Створюємо нову сесію
-        status.setComplete();  // Очищаємо сесію, щоб почати нову гру
+        session = request.getSession(true);
+        status.setComplete();
 
-        // Оновлюємо сесію з новими даними
         session.setAttribute("playerName", playerName != null ? playerName : "Гравець");
         session.setAttribute("currentLevel", level);
         session.setAttribute("mapIndex", mapIndex);
         session.setAttribute("difficulty", difficulty);
 
-        // Генерація нової карти
         Field field = generateFieldByDifficulty(difficulty, mapIndex);
         if (field == null) {
             return "<div>Помилка: Не вдалося згенерувати поле для складності: " + difficulty + ", індекс карти: " + mapIndex + "</div>";
         }
-
         session.setAttribute("field", field);
-
         System.out.println("restart-session завершено: currentLevel=" + session.getAttribute("currentLevel") + ", mapIndex=" + session.getAttribute("mapIndex") + ", difficulty=" + session.getAttribute("difficulty"));
         return renderField(field);
     }

@@ -18,7 +18,7 @@ import java.util.Date;
 )
 public class Score implements Serializable {
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "score_seq")
     private int ident;
     private String game;
     private String player;

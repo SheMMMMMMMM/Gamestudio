@@ -8,24 +8,19 @@ import org.springframework.format.annotation.DateTimeFormat;
 import java.io.Serializable;
 import java.util.Date;
 @Entity
-@NamedQuery(
-        name = "Comment.getCommentsForGame",
-        query = "SELECT c FROM Comment c WHERE c.game = :game ORDER BY c.commentedOn DESC"
-)
-@NamedQuery(
-        name = "Comment.resetComments",
-        query = "DELETE FROM Comment"
-)
+@NamedQuery(name = "Comment.getCommentsForGame", query = "SELECT c FROM Comment c WHERE c.game = :game ORDER BY c.commentedOn DESC")
+@NamedQuery(name = "Comment.resetComments", query = "DELETE FROM Comment")
 public class Comment implements Serializable {
     @Id
-    @GeneratedValue
-    private int ident;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private int id;
+
     private String game;
     private String player;
     private String comment;
 
     @Column(name = "commentedon")
-    @JsonFormat(pattern = "yyyy-MM-dd'T'HH:mm:ss.SS") // Вказуємо формат дати
+    @JsonFormat(pattern = "yyyy-MM-dd'T'HH:mm:ss.SS")
     private Date commentedOn;
 
     public Comment(String game, String player, String comment, Date commentedOn) {
@@ -37,47 +32,23 @@ public class Comment implements Serializable {
 
     public Comment() {}
 
-    public int getIdent() {return ident;}
+    public int getId() { return id; }
+    public void setId(int id) { this.id = id; }
 
-    public void setIdent(int ident) {this.ident = ident;}
+    public String getGame() { return game; }
+    public void setGame(String game) { this.game = game; }
 
-    public String getGame() {
-        return game;
-    }
+    public String getPlayer() { return player; }
+    public void setPlayer(String player) { this.player = player; }
 
-    public void setGame(String game) {
-        this.game = game;
-    }
+    public String getComment() { return comment; }
+    public void setComment(String comment) { this.comment = comment; }
 
-    public String getPlayer() {
-        return player;
-    }
+    public Date getCommentedOn() { return commentedOn; }
+    public void setCommentedOn(Date commentedOn) { this.commentedOn = commentedOn; }
 
-    public void setPlayer(String player) {
-        this.player = player;
-    }
-
-    public String getComment() {
-        return comment;
-    }
-
-    public void setComment(String comment) {
-        this.comment = comment;
-    }
-
-    public Date getCommentedOn() {
-        return commentedOn;
-    }
-
-    public void setCommentedOn(Date commentedOn) {
-        this.commentedOn = commentedOn;
-    }
-    public Date getDate() {
-        return commentedOn;
-    }
-    public void setDate(Date commentedOn) {
-        this.commentedOn = commentedOn;
-    }
+    public Date getDate() { return commentedOn; }
+    public void setDate(Date commentedOn) { this.commentedOn = commentedOn; }
 
     @Override
     public String toString() {
